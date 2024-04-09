@@ -49,25 +49,25 @@ public class AdministradorController {
     }
 
     // Método para lidar com o acesso do administrador
-    @PostMapping("/acesso-adm") // Anotação indicando que esse método responde a requisições POST para /acesso-adm
+    @PostMapping("/acesso-adm") // Anotação indicando que esse método responde a requisições POST para /acesso-adm.
     public String acessoAdm(@RequestParam String cpf,
             @RequestParam String senha) {
         try {
-            // Verifica se o CPF e a senha correspondem a um administrador no banco de dados
+            // Verifica se o CPF e a senha correspondem a um administrador no banco de dados.
             Boolean verificaCpfBoolean = administradorRepository.existsById(cpf);
             Boolean verificaSenhaBoolean = administradorRepository.findByCpf(cpf).getSenha().equals(senha);
             String url = "";
 
             if (verificaCpfBoolean && verificaSenhaBoolean) {
-                acessoAdministradorBoolean = true; // Define o acesso do administrador como verdadeiro
-                url = "redirect:/interna-adm"; // Redireciona para a área interna do administrador
+                acessoAdministradorBoolean = true; // Define o acesso do administrador como verdadeiro.
+                url = "redirect:/interna-adm"; // Redireciona para a área interna do administrador.
             } else {
-                url = "redirect:/login-adm"; // Redireciona de volta para o login
+                url = "redirect:/login-adm"; // Redireciona de volta para o login.
             }
             return url; // Retorna o redirecionamento
         } catch (Exception exception) {
             System.out.println(exception);
-            return "redirect:/login-adm"; // Redireciona de volta para o login em caso de exceção
+            return "redirect:/login-adm"; // Redireciona de volta para o login em caso de exceção.
             
         }
     }
