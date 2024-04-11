@@ -1,14 +1,12 @@
 package com.webapp.escola_xyz_b.Controller;
 
+import com.webapp.escola_xyz_b.Model.Administrador;
+import com.webapp.escola_xyz_b.Repository.AdministradorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.webapp.escola_xyz_b.Model.Administrador;
-import com.webapp.escola_xyz_b.Repository.AdministradorRepository;
-import com.webapp.escola_xyz_b.Repository.VerificaCadastroAdmRepository;
 
 @Controller
 public class AdministradorController {
@@ -16,16 +14,13 @@ public class AdministradorController {
     @Autowired
     AdministradorRepository administradorRepository;
 
-    @Autowired
-    VerificaCadastroAdmRepository verificaCadastroAdmRepository;
-
     Boolean acessoAdministradorBoolean = false;
 
     // Método para lidar com o cadastro de administradores
-    @PostMapping("/cadastrar-adm") // Anotação indicando que esse método responde a requisições POST para /cadastrar-adm
+    @PostMapping("/cadastrar-adm")
     public String cadastrarAdmBD(Administrador adm) {
         // Verifica se o CPF já está cadastrado no banco de dados
-        Boolean cpfJaCadastrado = verificaCadastroAdmRepository.existsById(adm.getCpf());
+        Boolean cpfJaCadastrado = administradorRepository.existsById(adm.getCpf());
         if (!cpfJaCadastrado) { // Verifica se o CPF não está cadastrado
             administradorRepository.save(adm); // Salva o administrador no banco de dados
             System.out.println("Cadastro realizado com sucesso");
@@ -37,7 +32,7 @@ public class AdministradorController {
     }
 
     // Método para acessar a área interna do administrador
-    @GetMapping("/interna-adm") // Anotação indicando que esse método responde a requisições GET para /interna-adm
+    @GetMapping("/interna-adm")
     public String getMethodName() {
         String url = "";
         if (acessoAdministradorBoolean) {
@@ -49,9 +44,9 @@ public class AdministradorController {
     }
 
     // Método para lidar com o acesso do administrador
-    @PostMapping("/acesso-adm") // Anotação indicando que esse método responde a requisições POST para /acesso-adm.
+    @PostMapping("/acesso-adm")
     public String acessoAdm(@RequestParam String cpf,
-            @RequestParam String senha) {
+                            @RequestParam String senha) {
         try {
             // Verifica se o CPF e a senha correspondem a um administrador no banco de dados.
             Boolean verificaCpfBoolean = administradorRepository.existsById(cpf);
@@ -68,7 +63,7 @@ public class AdministradorController {
         } catch (Exception exception) {
             System.out.println(exception);
             return "redirect:/login-adm"; // Redireciona de volta para o login em caso de exceção.
-            
+
         }
     }
 
