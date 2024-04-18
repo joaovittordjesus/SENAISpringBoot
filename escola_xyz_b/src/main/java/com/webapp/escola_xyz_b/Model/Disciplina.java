@@ -11,15 +11,11 @@ public class Disciplina {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nome;
     private String codigo;
     private int cargaHoraria;
 
-    // Construtores, getters e setters
-
-    public Disciplina() {
-    }
+    // Construtores
 
     public Disciplina(String nome, String codigo, int cargaHoraria) {
         this.nome = nome;

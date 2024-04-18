@@ -1,19 +1,27 @@
 package com.webapp.escola_xyz_b.Model;
 
 import java.io.Serializable;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
 public class Administrador implements Serializable{
-    //Atributtos
+    //Atributos
 
     @Id
+    private Long id;
     private String cpf;
     private String nome;
     private String email;
     private String senha;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getCpf() {
         return cpf;
@@ -46,5 +54,4 @@ public class Administrador implements Serializable{
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
 }

@@ -13,7 +13,8 @@ public class Professor{
     private String nome;
     private String email;
     private String senha;
-    private String cpf;
+    private Long cpf;
+    
     public Long getId() {
         return id;
     }
@@ -38,10 +39,10 @@ public class Professor{
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    public String getCpf() {
+    public Long getCpf() {
         return cpf;
     }
-    public void setCpf(String cpf) {
+    public void setCpf(Long cpf) {
         this.cpf = cpf;
     }
 
