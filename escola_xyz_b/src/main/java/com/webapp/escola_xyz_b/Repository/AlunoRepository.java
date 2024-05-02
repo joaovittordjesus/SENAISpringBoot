@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface AlunoRepository extends CrudRepository<Aluno, Long> {
     // Interface para realizar operações CRUD (Create, Read, Update, Delete) no banco de dados para a entidade Aluno
-    Aluno findByCpf(Long cpf);//Metodo para buscar um aluno por cpf
+    Aluno findByCpf(String cpf);//Metodo para buscar um aluno por cpf
     boolean existsByCpf(String cpf);//Metodo para verificar se o cpf do aluno existe no banco de dados
 }

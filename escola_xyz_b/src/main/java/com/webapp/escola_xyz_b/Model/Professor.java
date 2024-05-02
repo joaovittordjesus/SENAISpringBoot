@@ -14,7 +14,7 @@ public class Professor {
     private String nome; // Nome do professor
     private String email; // Email do professor
     private String senha; // Senha do professor
-    private Long cpf; // CPF do professor
+    private String cpf; // CPF do professor
 
     // Getters e Setters para os atributos
 
@@ -50,11 +50,11 @@ public class Professor {
         this.senha = senha; // Define a senha do professor
     }
 
-    public Long getCpf() {
+    public String getCpf() {
         return cpf; // Retorna o CPF do professor
     }
 
-    public void setCpf(Long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf; // Define o CPF do professor
     }
 }

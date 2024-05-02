@@ -13,7 +13,7 @@ public class Aluno {
     private String nome; // Nome do aluno
     private String email; // Email do aluno
     private String senha; // Senha do aluno
-    private Long cpf; // CPF do aluno
+    private String cpf; // CPF do aluno
 
     // Getters e setters para os atributos
 
@@ -49,11 +49,11 @@ public class Aluno {
         this.senha = senha;
     }
 
-    public Long getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(Long cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 }
